@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.AddTransaction"
+    android:background="@color/primaryThodaLight">
+    <include layout="@layout/custom_toolbar_1"></include>
+    <LinearLayout
+        android:background="@color/primaryDark"
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_margin="@dimen/margin_parent_6dp"
+            android:padding="@dimen/padding_child_3dp"
+            android:background="@drawable/date_time_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="@dimen/padding_child_3dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/iconfinder_date">
+
+            </ImageView>
+            <TextView
+                android:id="@+id/tV_currentDate_at"
+                android:textAlignment="viewEnd"
+                android:textSize="@dimen/date_time_24sp"
+                android:padding="@dimen/padding_child_3dp"
+                style="@style/setFont_white"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="date"></TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_margin="@dimen/margin_parent_6dp"
+            android:padding="@dimen/padding_child_3dp"
+            android:background="@drawable/date_time_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tV_currentTime_at"
+                android:textSize="@dimen/date_time_24sp"
+                android:padding="@dimen/padding_child_3dp"
+                style="@style/setFont_white"
+
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="time"></TextView>
+            <ImageView
+                android:padding="@dimen/padding_child_3dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@drawable/iconfinder_clock">
+
+            </ImageView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="@dimen/margin_parent_6dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_child_3dp"
+            style="@style/setFont_dark"
+            android:textOn="Income"
+            android:textOff="Expense"
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ToggleButton" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:padding="@dimen/padding_child_3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/eT_amount_at"
+                android:singleLine="true"
+                style="@style/setFont_dark"
+
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="Enter Amount in Rupees"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:padding="@dimen/padding_child_3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/eT_description_at"
+                style="@style/setFont_dark"
+
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:maxLines="3"
+                android:hint="Description"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            style="@style/setFont_white"
+            android:layout_margin="@dimen/margin_parent_6dp"
+            android:padding="@dimen/padding_child_3dp"
+            android:id="@+id/btn_save_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="Save">
+
+        </Button>
+    </RelativeLayout>
+</LinearLayout>

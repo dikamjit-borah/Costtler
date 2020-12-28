@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryThodaLight"
+    tools:context=".MainActivity">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/custom_toolbar"></include>
+            <Button
+                android:id="@+id/btn_add_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Transaction">
+
+            </Button>
+            <Button
+                android:id="@+id/btn_today_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transactions Today">
+
+            </Button>
+            <Button
+                android:id="@+id/btn_history_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="History">
+
+            </Button>
+
+        </LinearLayout>
+             <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tint="@color/white"
+            android:src="@drawable/ic_baseline_library_add_24"
+            android:layout_gravity="end|bottom">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
