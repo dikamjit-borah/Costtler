@@ -26,7 +26,6 @@ public class TransactionsTodayAdapter extends RecyclerView.Adapter<TransactionsT
 
         this.context = context;
         this.transactionsTodayModel = transactionsTodayModel;
-        Toast.makeText(context, "Inside  tta" + transactionsTodayModel.size(), Toast.LENGTH_SHORT).show();
     }
 
     @NonNull
@@ -37,8 +36,7 @@ public class TransactionsTodayAdapter extends RecyclerView.Adapter<TransactionsT
 
     @Override
     public void onBindViewHolder(@NonNull TransactionsTodayViewHolder holder, int position) {
-        Toast.makeText(context, "" + transactionsTodayModel.get(position).getAMOUNT(), Toast.LENGTH_SHORT).show();
-//        holder.tV_time_vh.setText(transactionsTodayModel.get(position).getTime());
+        holder.tV_time_vh.setText(transactionsTodayModel.get(position).getTIME());
         holder.tV_description_vh.setText(transactionsTodayModel.get(position).getDESCRIPTION());
         holder.tV_amount_vh.setText(transactionsTodayModel.get(position).getAMOUNT());
 

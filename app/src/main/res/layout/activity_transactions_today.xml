@@ -9,11 +9,62 @@
     <include layout="@layout/custom_toolbar_1">
 
     </include>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rV_tt"
-        android:layout_margin="@dimen/margin_parent_6dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_margin="@dimen/margin_parent_6dp"
+
+
+            android:gravity="end"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginRight="1dp"
+                android:layout_gravity="center"
+                android:src="@drawable/iconfinder_total"
+                android:layout_width="14dp"
+                android:layout_height="14dp">
+
+            </ImageView>
+            <TextView
+
+                style="@style/setFont_dark"
+                android:text="Total Transactions Today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+        <TextView
+            android:layout_margin="@dimen/margin_parent_6dp"
+            style="@style/setFont_dark"
+            android:layout_weight="1"
+            android:id="@+id/tV_totalAmount_tt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INR"></TextView>
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rV_tt"
+                android:layout_margin="@dimen/margin_parent_6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

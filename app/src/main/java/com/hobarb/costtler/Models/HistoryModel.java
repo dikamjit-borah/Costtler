@@ -1,13 +1,13 @@
 package com.hobarb.costtler.Models;
 
-public class TransactionsTodayModel {
+public class HistoryModel {
 
    // private String time;
     private String AMOUNT;
     private String DESCRIPTION;
     private String TIME;
 
-    public TransactionsTodayModel(String amount, String description, String time) {
+    public HistoryModel(String amount, String description, String time) {
 
         this.AMOUNT =amount;
         this.DESCRIPTION = description;

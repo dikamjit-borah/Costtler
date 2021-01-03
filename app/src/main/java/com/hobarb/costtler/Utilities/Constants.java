@@ -9,5 +9,6 @@ public class Constants {
 
 
     public static String DESCRIPTION = "DESCRIPTION";
+    public static String TOTAL_AMOUNT_TODAY = "TOTAL_AMOUNT";
     public static String AMOUNT = "AMOUNT";
 }

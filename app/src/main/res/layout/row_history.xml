@@ -30,64 +30,64 @@
                 android:gravity="end">
 
                 <TextView
-                    android:id="@+id/tV_time_rtt"
+                    android:id="@+id/tV_date_rtt"
                     android:layout_gravity="center"
 
                     android:padding="@dimen/padding_child_3dp"
                     style="@style/setFont_white"
-                    android:text="17:29 PM"
+                    android:text="2021-01-02"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"></TextView>
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <TextView
-
-                android:id="@+id/tV_description_rtt"
-
-
-                android:padding="@dimen/padding_child_3dp"
-                style="@style/setFont_white"
-                android:text="For dinnefxv "
-
-
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:ellipsize="end">
+                android:gravity="center">
 
-            </TextView>
+                <TextView
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <TextView
-                android:id="@+id/tV_amount_rtt"
-
-                android:padding="@dimen/padding_child_3dp"
-                style="@style/setFont_white"
-                android:text="500"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </TextView>
+                    android:id="@+id/tV_totalAmount_rtt"
 
 
-        </LinearLayout>
+                    android:padding="@dimen/padding_child_3dp"
+                    style="@style/setFont_white"
+                    android:text="Total expense "
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:ellipsize="end">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/tV_amount_rtt"
+
+                    android:padding="@dimen/padding_child_3dp"
+                    style="@style/setFont_white"
+                    android:text="500"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+            </LinearLayout>
 
 
 

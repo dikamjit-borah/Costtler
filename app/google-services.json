@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733063825594",
+    "project_id": "costtler",
+    "storage_bucket": "costtler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733063825594:android:7b0956f878c8fa2d2a5a83",
+        "android_client_info": {
+          "package_name": "com.hobarb.costtler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733063825594-3g9do9t23mf0ienjvd147aii2b7aep9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe1TK0tPDlTAQZvWHoH7QxAQcqxdeqV74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733063825594-3g9do9t23mf0ienjvd147aii2b7aep9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

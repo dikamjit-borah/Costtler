@@ -1,8 +1,11 @@
 package com.hobarb.costtler.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.hobarb.costtler.Adapters.TransactionsTodayAdapter;
+import com.hobarb.costtler.Models.TransactionsTodayModel;
 import com.hobarb.costtler.R;
 import com.hobarb.costtler.Utilities.Constants;
 
@@ -26,12 +34,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AddTransaction extends AppCompatActivity {
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase, databaseReference;
     EditText et_desc, et_amt;
     Button btn_save;
     Toolbar toolbar;
     TextView current_date, current_time;
-
+    private double totalAmount = 0.0;
 
 
     @Override
@@ -95,8 +103,13 @@ public class AddTransaction extends AppCompatActivity {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.AMOUNT).setValue(et_amt.getText().toString());
+
+                mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.AMOUNT).setValue(et_amt.getText().toString());
                 mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.DESCRIPTION).setValue(et_desc.getText().toString());
+                //mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(Constants.TOTAL_AMOUNT_TODAY).setValue(totalAmount);
+
+                startActivity(new Intent(AddTransaction.this, TransactionsToday.class ));
+                finish();
 
 
             }

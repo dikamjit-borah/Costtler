@@ -1,7 +1,6 @@
 package com.hobarb.costtler.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,14 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hobarb.costtler.Adapters.TransactionsTodayAdapter;
-import com.hobarb.costtler.Adapters.TransactionsTodayAdapterRVA;
 import com.hobarb.costtler.Models.TransactionsTodayModel;
 import com.hobarb.costtler.R;
 import com.hobarb.costtler.Utilities.BaseActivity;
@@ -29,10 +26,12 @@ import java.util.ArrayList;
 public class TransactionsToday extends BaseActivity {
     Toolbar toolbar;
     TextView toolbarText;
+    TextView totalAmtTextView;
     DatabaseReference databaseReference;
-RecyclerView recyclerView;
-ArrayList<TransactionsTodayModel> transactionsTodayModel;
-TransactionsTodayAdapter transactionsTodayAdapter;
+    RecyclerView recyclerView;
+    ArrayList<TransactionsTodayModel> transactionsTodayModel;
+    TransactionsTodayAdapter transactionsTodayAdapter;
+    double totalAmount = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ TransactionsTodayAdapter transactionsTodayAdapter;
         setContentView(R.layout.activity_transactions_today);
         toolbar = findViewById(R.id.tB_custom_ct1);
         setSupportActionBar(toolbar);
+        totalAmtTextView = findViewById(R.id.tV_totalAmount_tt);
 
         toolbarText = toolbar.findViewById(R.id.tV_activity_ct);
         toolbarText.setText("Transactions Today");
@@ -67,12 +67,16 @@ TransactionsTodayAdapter transactionsTodayAdapter;
                 for(DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     try{
-                        TransactionsTodayModel model = new TransactionsTodayModel(dataSnapshot.child("AMOUNT").getValue().toString(), dataSnapshot.child("DESCRIPTION").getValue().toString());
+                        double amt = Double.parseDouble(dataSnapshot.child("AMOUNT").getValue().toString());
+                        totalAmount += amt;
+
+                        TransactionsTodayModel model = new TransactionsTodayModel(dataSnapshot.child("AMOUNT").getValue().toString(), dataSnapshot.child("DESCRIPTION").getValue().toString(), dataSnapshot.getKey().toString());
                         transactionsTodayModel.add(model);
                     }
                     catch (Exception exception)
                     {
-                        Toast.makeText(TransactionsToday.this, "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransactionsToday.this, "onDataChange<TransactionsToday>:" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
                     }
 
 
@@ -81,13 +85,14 @@ TransactionsTodayAdapter transactionsTodayAdapter;
                 transactionsTodayAdapter = new TransactionsTodayAdapter(TransactionsToday.this, transactionsTodayModel);
                 recyclerView.setLayoutManager(new LinearLayoutManager(TransactionsToday.this));
                 recyclerView.setAdapter(transactionsTodayAdapter);
+                totalAmtTextView.setText("₹"+ totalAmount);
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-                Toast.makeText(TransactionsToday.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(TransactionsToday.this, "onCancelled: " + error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
