@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_margin="@dimen/margin_parent_6dp"
 
+    app:cardCornerRadius="@dimen/border_radius_16dp"
+    app:cardElevation="@dimen/tB_elevation"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="10dp"
-        app:cardElevation="@dimen/tB_elevation"
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_gravity="center"
             android:gravity="center"
@@ -27,10 +23,10 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="end">
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tV_date_rtt"
+                    android:id="@+id/tV_date_history"
                     android:layout_gravity="center"
 
                     android:padding="@dimen/padding_child_3dp"
@@ -50,7 +46,7 @@
 
                 <TextView
 
-                    android:id="@+id/tV_totalAmount_rtt"
+                    android:id="@+id/tV_totalAmount_history"
 
 
                     android:padding="@dimen/padding_child_3dp"
@@ -68,26 +64,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:id="@+id/tV_amount_rtt"
-
-                    android:padding="@dimen/padding_child_3dp"
-                    style="@style/setFont_white"
-                    android:text="500"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-
-
-            </LinearLayout>
 
 
 
@@ -98,4 +74,3 @@
 
 
 
-</LinearLayout>

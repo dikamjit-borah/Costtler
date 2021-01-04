@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +41,7 @@ public class AddTransaction extends AppCompatActivity {
     Button btn_save;
     Toolbar toolbar;
     TextView current_date, current_time;
-    private double totalAmount = 0.0;
+
 
 
     @Override
@@ -80,6 +82,9 @@ public class AddTransaction extends AppCompatActivity {
         btn_save = findViewById(R.id.btn_save_at);
         FirebaseApp.initializeApp(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        String username = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_NAME, "");
+        String phone = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_PHONE, "");
+
 
         Constants.CURRENT_DATE = String.valueOf(localDate);
 
@@ -103,10 +108,17 @@ public class AddTransaction extends AppCompatActivity {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sh
+                        = getSharedPreferences(Constants.SHARED_PREFS,
+                        Context.MODE_PRIVATE);
+                float amt = sh.getFloat(Constants.TOTAL_AMOUNT_TODAY_SHARED_PREF, 0);
+                Toast.makeText(AddTransaction.this, "ttamt" + amt, Toast.LENGTH_SHORT).show();
+                Double et_amt_value = Double.parseDouble(et_amt.getText().toString()) + amt;
 
-                mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.AMOUNT).setValue(et_amt.getText().toString());
-                mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.DESCRIPTION).setValue(et_desc.getText().toString());
-                //mDatabase.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE).child(Constants.TOTAL_AMOUNT_TODAY).setValue(totalAmount);
+
+                mDatabase.child(phone).child(Constants.CURRENT_DATE).child(Constants.TRANSACTIONS_TODAY).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.AMOUNT).setValue(et_amt.getText().toString());
+                mDatabase.child(phone).child(Constants.CURRENT_DATE).child(Constants.TRANSACTIONS_TODAY).child(String.valueOf(Constants.CURRENT_TIME).replace(':', '-')).child(Constants.DESCRIPTION).setValue(et_desc.getText().toString());
+                mDatabase.child(phone).child(Constants.CURRENT_DATE).child(Constants.TOTAL_AMOUNT_TODAY).setValue(et_amt_value);
 
                 startActivity(new Intent(AddTransaction.this, TransactionsToday.class ));
                 finish();

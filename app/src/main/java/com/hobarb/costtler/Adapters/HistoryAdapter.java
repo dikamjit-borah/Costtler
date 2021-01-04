@@ -30,15 +30,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @NonNull
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new HistoryViewHolder(LayoutInflater.from(context).inflate(R.layout.row_tt, parent, false));
+        return new HistoryViewHolder(LayoutInflater.from(context).inflate(R.layout.row_history, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        Toast.makeText(context, "" + HistoryModel.get(position).getAMOUNT(), Toast.LENGTH_SHORT).show();
-        holder.tV_time_vh.setText(HistoryModel.get(position).getTIME());
-        holder.tV_description_vh.setText(HistoryModel.get(position).getDESCRIPTION());
-        holder.tV_amount_vh.setText(HistoryModel.get(position).getAMOUNT());
+        holder.tV_date_vh.setText(HistoryModel.get(position).getDATE());
+        holder.tV_totalAmount_vh.setText(HistoryModel.get(position).getTOTAL_AMOUNT());
 
     }
 
@@ -49,13 +47,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     class HistoryViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tV_time_vh, tV_amount_vh, tV_description_vh;
+        TextView tV_date_vh, tV_totalAmount_vh;
 
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            tV_time_vh = itemView.findViewById(R.id.tV_time_rtt);
-            tV_description_vh = itemView.findViewById(R.id.tV_description_rtt);
-            tV_amount_vh = itemView.findViewById(R.id.tV_amount_rtt);
+            tV_date_vh = itemView.findViewById(R.id.tV_date_history);
+
+            tV_totalAmount_vh = itemView.findViewById(R.id.tV_totalAmount_history);
         }
     }
 }

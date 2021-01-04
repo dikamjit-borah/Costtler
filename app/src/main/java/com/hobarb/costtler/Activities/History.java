@@ -54,24 +54,28 @@ public class History extends AppCompatActivity {
             }
         });
 
+        String username = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_NAME, "");
+        String phone = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_PHONE, "");
+
+
         recyclerView = findViewById(R.id.rV_history);
 
         historyModels = new ArrayList<>();
 
         /*  databaseReference = FirebaseDatabase.getInstance().getReference().child(Constants.USER_PHONE+"/").child(Constants.CURRENT_DATE+"/");*/
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE+"/").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(phone).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     try{
-                        HistoryModel model = new HistoryModel(dataSnapshot.child("AMOUNT").getValue().toString(), dataSnapshot.child("DESCRIPTION").getValue().toString(), dataSnapshot.getKey().toString());
+                        HistoryModel model = new HistoryModel(dataSnapshot.child(Constants.TOTAL_AMOUNT_TODAY).getValue().toString(), dataSnapshot.getKey().toString());
                         historyModels.add(model);
                     }
                     catch (Exception exception)
                     {
-                        Toast.makeText(History.this, "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History.this, "History" + exception.getMessage(), Toast.LENGTH_SHORT).show();
                         return;
                     }
 

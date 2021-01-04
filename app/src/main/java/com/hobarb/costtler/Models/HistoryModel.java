@@ -3,47 +3,28 @@ package com.hobarb.costtler.Models;
 public class HistoryModel {
 
    // private String time;
-    private String AMOUNT;
-    private String DESCRIPTION;
-    private String TIME;
+    private String TOTAL_AMOUNT;
+    private String DATE;
 
-    public HistoryModel(String amount, String description, String time) {
-
-        this.AMOUNT =amount;
-        this.DESCRIPTION = description;
-        this.TIME = time;
-
+    public String getTOTAL_AMOUNT() {
+        return TOTAL_AMOUNT;
     }
 
-    /*public String getTime() {
-        return time;
+    public void setTOTAL_AMOUNT(String TOTAL_AMOUNT) {
+        this.TOTAL_AMOUNT = TOTAL_AMOUNT;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-*/
-    public String getAMOUNT() {
-        return AMOUNT;
+    public String getDATE() {
+        return DATE;
     }
 
-    public void setAMOUNT(String AMOUNT) {
-        this.AMOUNT = AMOUNT;
+    public void setDATE(String DATE) {
+        this.DATE = DATE;
     }
 
-    public String getDESCRIPTION() {
-        return DESCRIPTION;
+    public HistoryModel(String TOTAL_AMOUNT, String DATE) {
+        this.DATE = DATE;
+        this.TOTAL_AMOUNT = TOTAL_AMOUNT;
     }
 
-    public void setDESCRIPTION(String DESCRIPTION) {
-        this.DESCRIPTION = DESCRIPTION;
-    }
-
-    public String getTIME() {
-        return TIME;
-    }
-
-    public void setTIME(String TIME) {
-        this.TIME = TIME;
-    }
 }

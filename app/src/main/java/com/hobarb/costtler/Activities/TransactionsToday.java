@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class TransactionsToday extends BaseActivity {
     ArrayList<TransactionsTodayModel> transactionsTodayModel;
     TransactionsTodayAdapter transactionsTodayAdapter;
     double totalAmount = 0.0;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class TransactionsToday extends BaseActivity {
         setContentView(R.layout.activity_transactions_today);
         toolbar = findViewById(R.id.tB_custom_ct1);
         setSupportActionBar(toolbar);
+
+        sharedpreferences = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
+
         totalAmtTextView = findViewById(R.id.tV_totalAmount_tt);
 
         toolbarText = toolbar.findViewById(R.id.tV_activity_ct);
@@ -54,6 +60,8 @@ public class TransactionsToday extends BaseActivity {
         });
 
 
+        String username = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_NAME, "");
+        String phone = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE).getString(Constants.USER_PHONE, "");
 
         recyclerView = findViewById(R.id.rV_tt);
 
@@ -61,7 +69,7 @@ public class TransactionsToday extends BaseActivity {
 
       /*  databaseReference = FirebaseDatabase.getInstance().getReference().child(Constants.USER_PHONE+"/").child(Constants.CURRENT_DATE+"/");*/
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child(Constants.USER_PHONE).child(Constants.CURRENT_DATE+"/").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(phone).child(Constants.CURRENT_DATE+"/").child(Constants.TRANSACTIONS_TODAY).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren())
@@ -69,6 +77,11 @@ public class TransactionsToday extends BaseActivity {
                     try{
                         double amt = Double.parseDouble(dataSnapshot.child("AMOUNT").getValue().toString());
                         totalAmount += amt;
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        String tt = ""+ totalAmount;
+
+                        editor.putFloat(Constants.TOTAL_AMOUNT_TODAY_SHARED_PREF, (float) totalAmount);
+                        editor.commit();
 
                         TransactionsTodayModel model = new TransactionsTodayModel(dataSnapshot.child("AMOUNT").getValue().toString(), dataSnapshot.child("DESCRIPTION").getValue().toString(), dataSnapshot.getKey().toString());
                         transactionsTodayModel.add(model);

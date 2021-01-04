@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryThodaLight"
+    tools:context=".Activities.Dashboard">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/custom_toolbar">
+
+            </include>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:backgroundTintMode="screen"
+                android:src="@drawable/feature_borderr">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_parent_6dp"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_parent_6dp"
+                    android:layout_weight="1"
+                    android:elevation="@dimen/tB_elevation"
+                    app:cardBackgroundColor="@color/primaryDark"
+                    app:cardCornerRadius="@dimen/border_radius_16dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_today_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="24dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:src="@drawable/iconfinder_todays">
+
+                        </ImageView>
+
+                        <TextView
+                            style="@style/setFont_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:text="Transactions\nToday">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:layout_margin="@dimen/margin_parent_6dp"
+                    android:layout_weight="1"
+                    android:elevation="@dimen/tB_elevation"
+                    app:cardBackgroundColor="@color/primaryDark"
+                    app:cardCornerRadius="@dimen/border_radius_16dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_history_main"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="24dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:src="@drawable/iconfinder_history">
+
+                        </ImageView>
+
+                        <TextView
+                            style="@style/setFont_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:text="Recent\nHistory">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_parent_6dp"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_parent_6dp"
+                    android:layout_weight="1"
+                    android:elevation="@dimen/tB_elevation"
+                    app:cardBackgroundColor="@color/primaryDark"
+                    app:cardCornerRadius="@dimen/border_radius_16dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_monthly_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="24dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:src="@drawable/iconfinder_month">
+
+                        </ImageView>
+
+                        <TextView
+                            style="@style/setFont_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:text="Monthly\nExpenditures">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:layout_margin="@dimen/margin_parent_6dp"
+                    android:layout_weight="1"
+                    android:elevation="@dimen/tB_elevation"
+                    app:cardBackgroundColor="@color/primaryDark"
+                    app:cardCornerRadius="@dimen/border_radius_16dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_about_main"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="24dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:src="@drawable/iconfinder_help">
+
+                        </ImageView>
+
+                        <TextView
+                            style="@style/setFont_white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_child_3dp"
+                            android:text="About">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add_main"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="12dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:fabCustomSize="80dp"
+                android:src="@drawable/ic_baseline_library_add_24"
+                app:tint="@color/white">
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</LinearLayout>
